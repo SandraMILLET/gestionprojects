@@ -1,0 +1,1723 @@
+{
+  "projects": [
+    {
+      "id": "631a800e-c35b-4592-ba6f-24a52d82117e",
+      "name": "Pampilles & Cie",
+      "client": "Sandhra",
+      "type": "WooCommerce",
+      "deadline": "2025-10-11",
+      "amount": 2500,
+      "paid": 500,
+      "status": "En cours",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "0351ae28-3816-4391-8d9d-b5ca386a0881",
+          "name": "Cadrage",
+          "tasks": [
+            {
+              "id": "478f22cf-8324-4ace-a076-a5b21214622b",
+              "label": "Kickoff + objectifs & KPI",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-16",
+              "subs": [
+                {
+                  "id": "a323e7cb-b973-4ab3-a60e-e0fec60dcb5e",
+                  "label": "Ventes mensuelles cible",
+                  "done": false
+                },
+                {
+                  "id": "aafcb514-25fc-4036-93d7-8013e90b4a0d",
+                  "label": "Marge cible",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "f24c9d7e-dfa7-468f-95aa-acb19de7c446",
+              "label": "Arborescence site",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-17",
+              "subs": [
+                {
+                  "id": "14e055d7-525b-45f0-9ae3-19104e632a76",
+                  "label": "Accueil",
+                  "done": false
+                },
+                {
+                  "id": "23a85306-72cb-4b26-801d-722522f19d14",
+                  "label": "Catégories",
+                  "done": false
+                },
+                {
+                  "id": "b7779356-6b8d-4391-82ac-197c838ad187",
+                  "label": "Produit",
+                  "done": false
+                },
+                {
+                  "id": "b80c17e4-4058-4610-86d5-52169fe47aa3",
+                  "label": "Panier",
+                  "done": false
+                },
+                {
+                  "id": "ba3a73c6-1b7d-40e3-8ad4-bf948daebac2",
+                  "label": "Checkout",
+                  "done": false
+                },
+                {
+                  "id": "33487bd0-62d3-4570-87bf-6767ae77dfef",
+                  "label": "A propos",
+                  "done": false
+                },
+                {
+                  "id": "e3740310-3828-4b65-85de-1220be762c83",
+                  "label": "Contact",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "d9a1b05f-a4b4-42f2-90b2-29607585089b",
+              "label": "Rôles & accès (WP, Ionos, Stripe, Mail)",
+              "done": false,
+              "est_h": 1,
+              "tools": "",
+              "deadline": "2025-09-16",
+              "subs": []
+            },
+            {
+              "id": "fae7f9b8-b466-4e73-9fda-46f8dfeb1398",
+              "label": "Planning & jalons",
+              "done": false,
+              "est_h": 1,
+              "tools": "",
+              "deadline": "2025-09-16",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "3263f4ca-5d7c-4f45-ae28-241e1d4037f5",
+          "name": "UX/UI",
+          "tasks": [
+            {
+              "id": "c78aafbf-fa7d-45b7-bc9d-7290c8701e1e",
+              "label": "Moodboard & palette",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-18",
+              "subs": []
+            },
+            {
+              "id": "d54cba26-c1d9-44b9-a198-fa69675913db",
+              "label": "Design system (boutons, formulaires, badges)",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-19",
+              "subs": []
+            },
+            {
+              "id": "0052a9aa-63c8-4999-b2db-d0fa5c5aa8b9",
+              "label": "Wireframes mobile-first",
+              "done": false,
+              "est_h": 4,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": [
+                {
+                  "id": "7c4803b1-50e7-41e2-8d35-7ea466637059",
+                  "label": "Accueil",
+                  "done": false
+                },
+                {
+                  "id": "a8be84c0-363c-47ee-8605-2de0c2199987",
+                  "label": "PLP",
+                  "done": false
+                },
+                {
+                  "id": "27a9e2bd-b935-411d-82c7-30c40c379974",
+                  "label": "PDP",
+                  "done": false
+                },
+                {
+                  "id": "0508ba9b-e79a-47f3-bdb5-a16abe116504",
+                  "label": "Panier",
+                  "done": false
+                },
+                {
+                  "id": "a4d7f74b-4da8-4461-a09a-f1ddb353b601",
+                  "label": "Checkout",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "123cb368-2d5b-45d6-bd74-45de96d6c3a0",
+              "label": "Maquettes haute-fidélité",
+              "done": false,
+              "est_h": 6,
+              "tools": "",
+              "deadline": "2025-09-23",
+              "subs": [
+                {
+                  "id": "27408fd8-28b7-423f-a7ff-1e8b24b08144",
+                  "label": "Accueil",
+                  "done": false
+                },
+                {
+                  "id": "530b55c6-2875-499f-b2ab-751fb7935ac3",
+                  "label": "PLP",
+                  "done": false
+                },
+                {
+                  "id": "2c373b6b-e54d-4096-baf8-aa3fe02a437b",
+                  "label": "PDP",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bc698b45-b92d-4b26-a356-ef0a6778b417",
+          "name": "Catalogue",
+          "tasks": [
+            {
+              "id": "9cfc15b5-ecfb-4e70-ad83-3564ef244331",
+              "label": "Taxonomies (catégories, attributs)",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-19",
+              "subs": []
+            },
+            {
+              "id": "11d0c40b-3718-4c4d-8bae-63e545d43c0b",
+              "label": "Fiche type produit (BO)",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": [
+                {
+                  "id": "ab4771f1-cb8b-4d84-afb9-cc24e8eea033",
+                  "label": "SKU",
+                  "done": false
+                },
+                {
+                  "id": "0d993f55-281e-43e7-b785-9bdb917bfe74",
+                  "label": "Prix",
+                  "done": false
+                },
+                {
+                  "id": "9fd9d0de-931a-433f-9f5a-bfd87f28485c",
+                  "label": "Variations",
+                  "done": false
+                },
+                {
+                  "id": "eaa04d74-5b0c-4b84-bfaa-61e51f91fcd4",
+                  "label": "Photos WebP",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "db1a5c68-b4dc-44c5-8b5c-cf1ea0233481",
+              "label": "Import 140 BO (CSV)",
+              "done": false,
+              "est_h": 6,
+              "tools": "",
+              "deadline": "2025-09-24",
+              "subs": [
+                {
+                  "id": "d1c09d09-70d1-4bd6-b936-00730243936a",
+                  "label": "Mapping colonnes",
+                  "done": false
+                },
+                {
+                  "id": "9dfe5f4e-fe86-41c3-b0df-7d9060b91c62",
+                  "label": "Test 5 items",
+                  "done": false
+                },
+                {
+                  "id": "8195f01f-0739-4008-ba91-070fb9d5bd9d",
+                  "label": "Import global",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "bc16e595-283f-4182-a7bd-015b43313308",
+              "label": "Photos : compression & WebP",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-22",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "a161cb84-2c8f-4c5a-96ad-7fd46bde7632",
+          "name": "Paiements/Expédition/Légal",
+          "tasks": [
+            {
+              "id": "5cb49ee5-0054-4664-be34-893d15ec30b8",
+              "label": "Stripe paiement",
+              "done": false,
+              "est_h": 1,
+              "tools": "",
+              "deadline": "2025-09-25",
+              "subs": []
+            },
+            {
+              "id": "9ed86acd-15ec-43f3-b9a0-a385b7f5715d",
+              "label": "Modes d’expédition",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-25",
+              "subs": [
+                {
+                  "id": "29e2ab84-70a1-4e25-b750-ab37fa061502",
+                  "label": "Point relais",
+                  "done": false
+                },
+                {
+                  "id": "f0375fd8-ac81-4a13-a8d0-8fa0f78511ff",
+                  "label": "Colissimo",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "2cf69443-bfc4-48cd-b37f-2a3a7697a88a",
+              "label": "Pages légales (CGV, Mentions, RGPD)",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-26",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "136e0604-5cf3-4355-a33a-ef32638b9552",
+          "name": "SEO/Perf/Tracking",
+          "tasks": [
+            {
+              "id": "fdbd0656-1d5f-4fb7-bcde-dc1536314b18",
+              "label": "Title/Meta 20 pages",
+              "done": false,
+              "est_h": 5,
+              "tools": "",
+              "deadline": "2025-09-28",
+              "subs": []
+            },
+            {
+              "id": "eb91495e-4597-4e5d-b937-01c2a261edcb",
+              "label": "Schema Product + Breadcrumb",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-28",
+              "subs": []
+            },
+            {
+              "id": "a3b54ec2-215f-4984-a827-5ce780a16a76",
+              "label": "Optimisation PageSpeed (LCP, CLS)",
+              "done": false,
+              "est_h": 4,
+              "tools": "",
+              "deadline": "2025-09-29",
+              "subs": []
+            },
+            {
+              "id": "709fa9e9-4f01-4ea5-8990-05b0346626d8",
+              "label": "GA4 + events e-commerce",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-29",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "82bed404-04ab-455f-8d32-08a0f5c83fab",
+          "name": "QA",
+          "tasks": [
+            {
+              "id": "189c1f24-1854-46ea-9f29-d888ab974526",
+              "label": "Parcours achat mobile",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-10-01",
+              "subs": [
+                {
+                  "id": "d1c07eff-3bbc-4566-a018-b3d56820421f",
+                  "label": "Ajouter au panier",
+                  "done": false
+                },
+                {
+                  "id": "8dd91c6d-fdc2-4a52-84f2-4d6b101fc412",
+                  "label": "Checkout invité",
+                  "done": false
+                },
+                {
+                  "id": "5216f4e0-da64-4dcd-a3f4-09243823435d",
+                  "label": "Confirmation",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "bbc8f98d-cae9-4299-a642-3b6d78289303",
+              "label": "Tests moyens de paiement",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-01",
+              "subs": []
+            },
+            {
+              "id": "2057385b-43b2-41bd-930b-27ae42240c21",
+              "label": "Accessibilité rapide (AA)",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-30",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "77d70d23-233c-4919-b90b-ffbe1067c613",
+          "name": "Pré-lancement & Lancement",
+          "tasks": [
+            {
+              "id": "7069aa45-dfb0-4c4f-8585-eae30ed3d00c",
+              "label": "Recette finale + check SEO",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-03",
+              "subs": []
+            },
+            {
+              "id": "30a76c67-ea2f-4153-bd3c-e01d3b62bb0c",
+              "label": "DNS/HTTPS + Redirections",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-04",
+              "subs": []
+            },
+            {
+              "id": "db31dd9c-4964-49c2-88f6-143671d511d7",
+              "label": "Publication & monitoring",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-04",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "7356beec-ff46-4ebb-a6e6-5e5120ddaee9",
+          "name": "Post-lancement",
+          "tasks": [
+            {
+              "id": "6b9cec81-f6d6-4317-a238-7deeef7c04e7",
+              "label": "Monitoring erreurs & 404",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-07",
+              "subs": []
+            },
+            {
+              "id": "a9741530-ed41-497d-87b9-5d60d5426f0d",
+              "label": "Améliorations itératives S+2",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-11",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "8f1f97b0-8e0f-4dbe-852f-107ff5f7ca7a",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "55ecd8a6-2e7a-4417-9379-04b5b3c098fe",
+              "label": "Page : Accueil",
+              "done": false,
+              "est_h": 4,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-04",
+              "subs": [
+                {
+                  "id": "c210e2b4-c5d4-45e1-8978-ef4998a5a81f",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "49d9a4a3-a5ec-4e31-9e25-c031ef613ef6",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "96745209-2dae-40d3-a1d2-094a4d3ca639",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "881ee45d-47a2-4c76-bb12-4ab8b1a15aff",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "a8aae93b-e68d-46bd-852d-9fc40b8c47f3",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "cc03232a-9f64-4190-8268-35e38eefd34f",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "a9fcd411-7f49-49bf-873e-55a4abb63885",
+              "label": "Page : Catégorie : Boucles d’oreilles",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-15",
+              "subs": [
+                {
+                  "id": "dedb2fec-67a6-4211-91b8-4f3ef52bded4",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "e1dc42ae-cde5-4bb0-b209-0adfe34c41de",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "a940dd81-854d-4144-b207-baf92c854c8a",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "31d30e54-91ed-4710-9744-0404f6bea221",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "8dbafc21-d68a-493c-8803-c8aa5ddfcf63",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "e8b8fb85-a4de-4331-84fc-f6bfd220f72d",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "faf62177-efe2-49e7-b706-ee41cedb628b",
+              "label": "Page : Produit type",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-15",
+              "subs": [
+                {
+                  "id": "72077087-aaef-41d4-998a-24da1087fe41",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "3b5530d8-fd17-4ca2-94ea-b1f6b676c2e4",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "16f25775-bdca-46cb-809c-2d6d080a6d1b",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "50097c80-9822-4c78-b3e0-ce40b68a9ade",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "92bab1f0-7829-4137-8766-a6b1fc0afa67",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "116bfd3d-3a31-4161-8579-028e337122d7",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "bbca22c0-00af-4f76-b716-618cc9057bf5",
+              "label": "Page : A propos",
+              "done": false,
+              "est_h": 2,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-30",
+              "subs": [
+                {
+                  "id": "53b953db-860f-4142-ac4c-38b3759e1239",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "bb826ec1-492c-4485-94b4-56fee7d6e629",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "46751282-85d0-4fd1-855c-889a6f011d63",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "fd3ad2f6-3883-4f77-8d94-e4fc71d56502",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "f422b9d8-e573-4fb8-8d4b-f81374de444c",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "f0c24b35-5d80-4550-aae1-c2cd9480c754",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "b1cbb523-cc42-4e37-a29e-3d9cbb01a699",
+              "label": "Page : Contact",
+              "done": false,
+              "est_h": 2,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-16",
+              "subs": [
+                {
+                  "id": "174853b9-2f6f-4a0f-86a6-f5a3f03c02b2",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "924c278a-07cb-46b0-895c-56c226b64eea",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "0da9caee-c647-4ad1-971d-a70fa07ebed8",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "fceb51c1-71c5-4fc7-b782-1d21406c6340",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "50a21ff8-15d3-4641-8013-165ee32ce1b7",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "0d44afd4-8983-45fe-a155-df187bfd3328",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.525529",
+      "updatedAt": "2025-09-13T12:09:31.525532",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "363a9cad-994a-476d-bbf4-192c33441ff5",
+      "name": "Réussir mon BTS – Tunnel",
+      "client": "Projet BTS",
+      "type": "Tunnel de vente",
+      "deadline": "2025-10-04",
+      "amount": 1800,
+      "paid": 600,
+      "status": "En cours",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "0b99c60c-b421-4c08-9376-23534bc638d0",
+          "name": "Offre & Copy",
+          "tasks": [
+            {
+              "id": "0a6970cd-db9e-448d-815e-8d6c6705ec39",
+              "label": "Clarifier offre & bonus",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-16",
+              "subs": []
+            },
+            {
+              "id": "90ffebe4-87ed-4b9f-b790-1abb6ec6dbbf",
+              "label": "Copy landing (H1, promesse, preuves, FAQ)",
+              "done": false,
+              "est_h": 4,
+              "tools": "",
+              "deadline": "2025-09-18",
+              "subs": [
+                {
+                  "id": "f662ad1e-d143-443f-85eb-f5e3e71f3623",
+                  "label": "Accroche",
+                  "done": false
+                },
+                {
+                  "id": "23390940-9506-479c-bc18-2425f68e8a1e",
+                  "label": "Promesse",
+                  "done": false
+                },
+                {
+                  "id": "53e1f086-ee01-403d-ad18-5ba81dd0b845",
+                  "label": "Objections",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7d459ec4-7a49-41d5-84c8-c9f265fb0025",
+          "name": "FunnelKit",
+          "tasks": [
+            {
+              "id": "895e8d7e-146c-4443-9453-6ae21042d793",
+              "label": "Template page + blocks",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-18",
+              "subs": []
+            },
+            {
+              "id": "1003d7b1-9ada-472e-8843-2a07bead2753",
+              "label": "Checkout + order bump + upsell",
+              "done": false,
+              "est_h": 4,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": []
+            },
+            {
+              "id": "cb310afc-be06-4ac3-9411-68d58bb1fe19",
+              "label": "Thank you + webhooks",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-21",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "901998a4-d0a7-4b29-ab24-c21ffb4c45c4",
+          "name": "Emailing",
+          "tasks": [
+            {
+              "id": "13f0207b-acec-4706-bd24-50b3a05fc013",
+              "label": "Séquence follow-up J0–J7",
+              "done": false,
+              "est_h": 5,
+              "tools": "",
+              "deadline": "2025-09-22",
+              "subs": [
+                {
+                  "id": "c26dd51f-f165-4c68-ad88-5beb9d22aa34",
+                  "label": "J0 bienvenue",
+                  "done": false
+                },
+                {
+                  "id": "0c239756-b754-411d-b6f2-20cd1b3a1cb9",
+                  "label": "J1 preuve",
+                  "done": false
+                },
+                {
+                  "id": "dcccd4a5-6ee1-4bf2-ba0d-3f363241730f",
+                  "label": "J3 objection",
+                  "done": false
+                },
+                {
+                  "id": "878be904-20e2-46e1-a15a-471c91d61b83",
+                  "label": "J5 urgence",
+                  "done": false
+                },
+                {
+                  "id": "0378abb2-1079-4461-8f1e-d5517dd9521f",
+                  "label": "J7 offre",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "85375c99-7bda-4b6a-9eab-db53828d9eed",
+          "name": "Tracking",
+          "tasks": [
+            {
+              "id": "60624693-ba6b-405d-b48e-40c9ea10ebfb",
+              "label": "GA4 + events (view_item, purchase)",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-22",
+              "subs": []
+            },
+            {
+              "id": "1f3f5d50-47b8-4395-a5b8-407647eed401",
+              "label": "Pixel Meta (optional)",
+              "done": false,
+              "est_h": 1,
+              "tools": "",
+              "deadline": "2025-09-22",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "51e3d2ee-dfb7-44e6-b21f-a05236ca464d",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "7438033e-617a-43b0-9399-4f0080dfff41",
+              "label": "Page : Landing principale",
+              "done": false,
+              "est_h": 4,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-11",
+              "subs": [
+                {
+                  "id": "3e1ad790-5ad7-4e05-95f2-445546875851",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "debf7f91-22c2-4a95-a2ea-0e2affd2454e",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "9ff16e2e-ecd8-4daf-96c5-12e337c3cb6c",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "e6e4d309-abe3-4b2b-bd91-17af06f126c6",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "57a56518-92f8-454e-a5a2-412c7c71eebb",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "13a5f621-5ab4-4f58-903f-825bbb91c96c",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "4c4c2b58-38c1-4da7-aa8b-8d28670947b4",
+              "label": "Page : Checkout",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-01",
+              "subs": [
+                {
+                  "id": "c560ffe6-fa27-49d0-89bc-7f7ee98c8ae0",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "afa54f18-bd57-4850-9c7a-40c3653b12f5",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "4bcb2e71-84d2-46e6-8f89-d16caf754892",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "63ca5468-c333-4f84-aa11-f0a13abb7c71",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "baf38f06-2299-4f66-91b6-2aa53fca4b8e",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "132395ee-f438-4722-9e8a-0c2ebb477485",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "3aad535e-4524-4079-9192-19765e8c7e25",
+              "label": "Page : Merci",
+              "done": false,
+              "est_h": 2,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-15",
+              "subs": [
+                {
+                  "id": "bae202c5-65de-4474-818d-4da0efa2ee09",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "1dfcf787-6534-4746-9c30-f460ded2c4b3",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "dfdb92dc-db0d-4456-98ce-cdd4420b70fe",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "a9f55fcd-fd2e-4a9f-8148-280b65e8e9ce",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "f33af5d6-df6c-4bb1-ba68-3a438c1d7c49",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "b28539fd-f838-4e32-b6a7-896a3826db08",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.525969",
+      "updatedAt": "2025-09-13T12:09:31.525971",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "eaaf0b8a-083f-48dd-a7f6-573974339ac7",
+      "name": "Atelier Mer’elle",
+      "client": "Stéphanie",
+      "type": "WooCommerce",
+      "deadline": "2025-10-18",
+      "amount": 3200,
+      "paid": 300,
+      "status": "En cours",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "e41db4ee-902b-42c7-a15f-a5ea824f450a",
+          "name": "Cadrage",
+          "tasks": [
+            {
+              "id": "069eb257-b35b-437c-9518-3acd4fc54138",
+              "label": "Cahier des charges détaillé",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-17",
+              "subs": []
+            },
+            {
+              "id": "38a77cca-f9e3-44a9-be97-cad81d1fcf36",
+              "label": "Arborescence",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-18",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "e6b9eade-fca5-4942-927f-22860e43b78f",
+          "name": "Design",
+          "tasks": [
+            {
+              "id": "a0bd6357-9f10-400d-8e86-fcd54482e5b6",
+              "label": "UI Kit",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": []
+            },
+            {
+              "id": "15b9f4a8-0ec5-440d-b3d3-7380428ae4e4",
+              "label": "Maquettes",
+              "done": false,
+              "est_h": 5,
+              "tools": "",
+              "deadline": "2025-09-23",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "e94f1636-0cab-4a04-93e2-3ef613358bd8",
+          "name": "Catalogue",
+          "tasks": [
+            {
+              "id": "9e6de6d4-6ac2-48a4-8314-9c79feb243e0",
+              "label": "Familles produits",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-22",
+              "subs": []
+            },
+            {
+              "id": "f67d6cea-c88c-463e-8d38-5fd05a63042c",
+              "label": "Livraison & zones",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-25",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "a4ee347f-e9d8-46ec-a752-03e447347684",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "d9a2bef0-a9fd-46ca-8f83-0660b87c3dd6",
+              "label": "Page : Accueil",
+              "done": false,
+              "est_h": 4,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-26",
+              "subs": [
+                {
+                  "id": "62aed375-6d4e-4f41-82c4-d73ce1aca3a4",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "4fb5ef1e-7424-48a5-8dea-b98aed31d407",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "7b05fc59-2823-4996-a3a2-82a276bd0c54",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "b6260076-b3c4-4c70-ba51-44040d72c1de",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "f6556d21-8546-45e1-830a-00bf18ccc196",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "8f0f242d-0d17-4843-9db2-4490a9b99d5a",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "f76d8122-cb48-4c59-9e75-ef436c784a26",
+              "label": "Page : Catégorie : Ateliers",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-22",
+              "subs": [
+                {
+                  "id": "4fba71e4-9df1-4cdd-8f24-1beafb85c1a6",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "fa2bba51-921a-45c0-9bdb-b56b784ebae9",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "8887a54d-6c13-4d72-9c08-439f1d28125e",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "63b33e40-0f35-483b-b0f9-65862779bbc9",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "8b34a152-ff2e-46cb-affd-dd8b12daf86d",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "404944c6-cad0-4a4f-b666-d7794b465908",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "68698b9b-a166-4a44-bf4c-4acec4b08f8d",
+              "label": "Page : Produit type",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-21",
+              "subs": [
+                {
+                  "id": "ee0354dc-7154-4892-9ecb-a201e169c2fd",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "c2942082-0a3b-47b0-9552-48474b0084cd",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "b2ddf10a-1979-4647-9ea2-186e6b4a447a",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "3cb99cb9-67f5-4304-bdb6-1b084e1ecef2",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "b5b5fe2b-2818-4178-9cfb-982f93eb7e42",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "d4cb0c2b-18e9-4838-b12d-b4f1c5b6e7eb",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.526392",
+      "updatedAt": "2025-09-13T12:09:31.526394",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "71903d7f-77d7-4a33-ad0d-5a4ae259861d",
+      "name": "NLW — Nathalie Longefay Wedding",
+      "client": "NLW",
+      "type": "SEO",
+      "deadline": "2025-10-01",
+      "amount": 1200,
+      "paid": 700,
+      "status": "En cours",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "fe2937d4-ddbd-4591-8004-003a351afd11",
+          "name": "SEO On-page",
+          "tasks": [
+            {
+              "id": "897330f5-9c24-408e-b035-cec350527f64",
+              "label": "Plan balises 10 pages",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-19",
+              "subs": []
+            },
+            {
+              "id": "866e881f-f0b2-43ae-9ebc-36ef283e8ce3",
+              "label": "Schema.org (LocalBusiness)",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "5b772464-078f-4921-9465-7a72e07113b0",
+          "name": "Contenu",
+          "tasks": [
+            {
+              "id": "f3ad86b2-1497-4c82-ba3c-b6d6ba87923d",
+              "label": "2 articles pilotes",
+              "done": false,
+              "est_h": 4,
+              "tools": "",
+              "deadline": "2025-09-23",
+              "subs": []
+            },
+            {
+              "id": "a18315ac-b4f2-4f27-9b45-708a789c32df",
+              "label": "Maillage interne",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-09-25",
+              "subs": []
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.526540",
+      "updatedAt": "2025-09-13T12:09:31.526541",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "31c474a8-425c-4ab3-8b1b-d90d994571c9",
+      "name": "La Vieille Italie",
+      "client": "LVI",
+      "type": "Site vitrine",
+      "deadline": "2025-11-02",
+      "amount": 1500,
+      "paid": 0,
+      "status": "En pause",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "ae4e3884-e560-4f45-a4d0-17c0ea4bbffb",
+          "name": "Design",
+          "tasks": [
+            {
+              "id": "9a01c56e-b472-4a8d-9aab-82ace6aeee18",
+              "label": "Wireframes",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-23",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "1eda8e5a-6317-4e54-9107-c7dd91c9eb8d",
+          "name": "Build",
+          "tasks": [
+            {
+              "id": "1a76c405-3cec-457b-a8b7-4e83ec8dbd0b",
+              "label": "Intégration",
+              "done": false,
+              "est_h": 6,
+              "tools": "",
+              "deadline": "2025-10-03",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "b1b59b3c-6c99-4d32-9b09-253b7e227de0",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "2f0a9d2f-81fb-436c-b24e-2e1576ec065c",
+              "label": "Page : Accueil",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-18",
+              "subs": [
+                {
+                  "id": "8fc2b7fe-2ea0-43ae-a0bf-aae6a13d4f15",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "8453edce-2083-4582-8b04-e6731f211489",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "4196d704-7176-45eb-aaab-888ee864f7f9",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "8689edfe-733a-45b9-9743-f170355f01c8",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "133759ab-3212-4aa5-a399-171a3d162085",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "098e3a03-4b67-45e2-a974-a9b223dd695d",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "7b97696e-1a31-49e9-ba77-80108c70dacf",
+              "label": "Page : Menu",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-01",
+              "subs": [
+                {
+                  "id": "f7d4273a-ad28-4ed8-afda-d7291297670f",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "4755e682-5786-4bd4-a7fc-f7ca6ce8bd54",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "952553b6-4015-4cc1-a5be-6fd3ffe7f793",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "7cd5a7a2-cfc9-4493-824c-f5528309704e",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "90cca80d-c341-4c56-b408-cd6c6cf2d572",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "8b1a6dd7-45a5-472b-98f3-61945b425313",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "7451b285-827a-4583-90b7-8df654e6b311",
+              "label": "Page : Contact",
+              "done": false,
+              "est_h": 2,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-17",
+              "subs": [
+                {
+                  "id": "7e275309-34e1-442b-bacd-22fcc8b6c016",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "4fc4aee1-5d70-44d9-a259-9a778690e71d",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "75fbd86e-6ca0-449b-8954-a85ecbe6e614",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "ad90d3d4-5697-4c2b-8dee-ba4855cad787",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "e3d86860-ecde-482b-a830-d1bbb2925f18",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "f5f31d04-f57a-47c4-bfbe-c38e6600f31c",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.526793",
+      "updatedAt": "2025-09-13T12:09:31.526795",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "b73696b1-7616-4f33-a950-161f31a6b6e1",
+      "name": "RSM — Site & Contenu",
+      "client": "Interne",
+      "type": "SEO",
+      "deadline": "2025-11-12",
+      "amount": 0,
+      "paid": 0,
+      "status": "Prospection",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "ce9a300b-27e2-4dec-9c06-9ab0a22010a0",
+          "name": "SEO Interne",
+          "tasks": [
+            {
+              "id": "a16a0a27-cbd6-4bf8-b152-c388311a6e45",
+              "label": "Cluster pages services",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-27",
+              "subs": []
+            },
+            {
+              "id": "4885a82e-43bc-4ebd-87a3-bbef02c322b3",
+              "label": "Maillage blog→services",
+              "done": false,
+              "est_h": 2,
+              "tools": "",
+              "deadline": "2025-10-04",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "be01bf53-8054-4eb6-9739-267dfb1a2ee6",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "0142b93e-0cbf-450a-b660-542065722dcd",
+              "label": "Page : Service : Création site",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-20",
+              "subs": [
+                {
+                  "id": "4d386ee4-f221-4af4-9fbc-854ed1478e44",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "81ebff92-7dbb-47f0-a649-a964557a66f1",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "795370ff-9993-41ae-91cb-659c22674dbe",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "005c16e3-2861-4ff7-a4bb-59c4073403f7",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "c05e659f-2356-494d-8d67-d08ee433d668",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "d7fbf84b-1f6e-429c-a1a2-56efbdf6e8fa",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "14eb9626-66f2-4a89-b0b6-b55e9c712a66",
+              "label": "Page : Service : SEO",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-10-18",
+              "subs": [
+                {
+                  "id": "a941e984-5835-4720-8361-951289ac4985",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "35398ce7-86df-4647-beaa-112324f3ec93",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "49bd9570-20c6-4840-950f-8cf2783a1a85",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "3a8b1706-8ff3-4934-a094-695a328f2368",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "fa332fc4-af67-467d-9a67-64635c1b1202",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "7870fcca-c925-4956-af54-debefa8c7099",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.526983",
+      "updatedAt": "2025-09-13T12:09:31.526984",
+      "metrics": {
+        "burndown": []
+      }
+    },
+    {
+      "id": "498ed1cc-5e88-4d62-9730-f73ccb0bc6d0",
+      "name": "Stéphanie couture — Tunnel",
+      "client": "Stéphanie",
+      "type": "Tunnel de vente",
+      "deadline": "2025-10-09",
+      "amount": 1400,
+      "paid": 200,
+      "status": "En cours",
+      "notes": "",
+      "contact": {
+        "email": "",
+        "firstName": "",
+        "lastName": "",
+        "phone": ""
+      },
+      "phases": [
+        {
+          "id": "db2712a8-4fe7-4f40-a1b0-c2e89fa97ac6",
+          "name": "Tunnel",
+          "tasks": [
+            {
+              "id": "06ebd4a3-2518-43c4-ad14-217169ef4126",
+              "label": "Offre & pages",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-20",
+              "subs": []
+            },
+            {
+              "id": "8106a0a9-8dec-4d78-8fcf-36d1530c40f5",
+              "label": "Checkout + bump",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-23",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "31e8a3f9-3a40-4569-8972-f88b9d4cd9b8",
+          "name": "Emailing",
+          "tasks": [
+            {
+              "id": "b74e40d9-d737-4c8a-9511-f69bed3ee73e",
+              "label": "Séquence 5j",
+              "done": false,
+              "est_h": 3,
+              "tools": "",
+              "deadline": "2025-09-25",
+              "subs": []
+            }
+          ]
+        },
+        {
+          "id": "acab1110-7fb5-45e0-9c9e-bedfa1312ced",
+          "name": "Pages",
+          "tasks": [
+            {
+              "id": "c5df0d39-79a6-47ff-9106-d30ff0b9638e",
+              "label": "Page : Landing couture",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-25",
+              "subs": [
+                {
+                  "id": "f79dd305-a834-4bb7-803d-5a84277b1401",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "fcac5db2-379c-4441-aa29-0c0d24937906",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "64e04ba5-c477-4c3e-9f77-7c65566aff35",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "63af03a7-e49a-4286-b54c-90f2991929ec",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "f05806a5-6863-4ff4-9254-9b0917a85a1f",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "229da85b-f37f-4ca2-82a4-3b30ef107154",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            },
+            {
+              "id": "7d834187-7045-4a35-9f2f-ce1889884827",
+              "label": "Page : Checkout",
+              "done": false,
+              "est_h": 3,
+              "tools": "WP/Elementor",
+              "deadline": "2025-09-23",
+              "subs": [
+                {
+                  "id": "84bff751-b5c4-47f8-838b-7f0a402017ef",
+                  "label": "Contenu",
+                  "done": false
+                },
+                {
+                  "id": "93694b39-6eed-441b-add3-030d6d93e3e5",
+                  "label": "Design",
+                  "done": false
+                },
+                {
+                  "id": "a0584f58-29a8-443c-ba38-2589cb3d9da4",
+                  "label": "Build",
+                  "done": false
+                },
+                {
+                  "id": "c6584ef0-5522-4c6d-ae0e-801f238c87a9",
+                  "label": "SEO",
+                  "done": false
+                },
+                {
+                  "id": "e16953a0-0371-4508-ae18-71ddce7f68f5",
+                  "label": "A11y/Perf",
+                  "done": false
+                },
+                {
+                  "id": "b72a1c81-fde8-4e88-93b1-1ac98ebea18e",
+                  "label": "QA/Tracking",
+                  "done": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "createdAt": "2025-09-13T12:09:31.527236",
+      "updatedAt": "2025-09-13T12:09:31.527238",
+      "metrics": {
+        "burndown": []
+      }
+    }
+  ]
+}

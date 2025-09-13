@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RSM – Projet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="assets/app.css" rel="stylesheet">
+</head>
+<body>
+<header class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html" aria-label="Retour au dashboard">
+      <svg class="icon"><use href="assets/icons.svg#back"></use></svg> RSM
+    </a>
+    <div class="ms-auto d-flex gap-2">
+      <button id="btnExportMd" class="btn btn-light btn-sm">
+        <svg class="icon"><use href="assets/icons.svg#download"></use></svg> Export MD
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container py-3" id="main">
+  <div id="projectHeader" class="mb-3" aria-live="polite"></div>
+
+  <section class="card mb-3">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-12 col-lg-8">
+          <h2 class="h5">Notes</h2>
+          <textarea id="notes" class="form-control" rows="4" aria-label="Notes du projet"></textarea>
+          <div class="form-text">Sauvegarde automatique</div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <h2 class="h5">Métriques</h2>
+          <ul class="list-unstyled mb-2" id="metricsList"></ul>
+          <canvas id="burndown" height="160" role="img" aria-label="Burndown chart"></canvas>
+          <button id="btnRecalc" class="btn btn-outline-primary btn-sm mt-2">Recalculer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="phasesTitle" class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h2 id="phasesTitle" class="h5">Phases & tâches</h2>
+      <div class="d-flex gap-2">
+        <button id="btnAddPhase" class="btn btn-accent btn-sm">
+          <svg class="icon"><use href="assets/icons.svg#plus"></use></svg> Phase
+        </button>
+        <button id="btnAddPageShortcut" class="btn btn-outline-secondary btn-sm">
+          + Page (checklist)
+        </button>
+      </div>
+    </div>
+    <div class="accordion" id="phasesAcc" role="region" aria-label="Liste des phases"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/project.js"></script>
+</body>
+</html>

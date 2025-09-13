@@ -1,0 +1,32 @@
+:root{
+  --rsm-primary:#412e7e;
+  --rsm-accent:#9b5dc9;
+  --rsm-blue:#6e84de;
+  --rsm-blue-2:#a6c2f4;
+  --rsm-lav:#b687e2;
+  --focus:#0d6efd;
+}
+.bg-primary{ background-image: linear-gradient(263deg, var(--rsm-primary), var(--rsm-blue), var(--rsm-lav)); }
+.btn-accent{ background: var(--rsm-accent); color:#fff; border:0; }
+.btn-accent:hover{ filter: brightness(0.95); }
+.icon{ width:1rem; height:1rem; vertical-align:-.125rem; }
+.card:hover{ transition:transform .08s ease, box-shadow .1s ease; transform: translateY(-1px); box-shadow:0 .25rem 1rem rgba(0,0,0,.06); }
+.progress-thin{ height:.5rem; }
+.badge-type{ background: var(--rsm-blue-2); color:#222; }
+.badge-status-En\ cours{ background:var(--rsm-accent); }
+.badge-status-En\ pause{ background:#6c757d; }
+.badge-status-Livré{ background:#198754; }
+.badge-status-Facturé{ background:#0dcaf0; color:#000; }
+.badge-status-Prospection{ background:#ffc107; color:#000; }
+.badge-status-Archivé{ background:#343a40; }
+.deadline-pill{ font-variant-numeric:tabular-nums; }
+.deadline-red{ background:#dc3545 !important; }
+.deadline-orange{ background:#fd7e14 !important; color:#000; }
+.deadline-yellow{ background:#ffc107 !important; color:#000; }
+.deadline-green{ background:#198754 !important; }
+.timeline{ display:grid; gap:.75rem; }
+.timeline .item{ display:flex; align-items:center; gap:.75rem; padding:.75rem; border:1px solid #e9ecef; border-radius:.75rem; }
+.timeline .dot{ width:.75rem; height:.75rem; border-radius:999px; background:var(--rsm-accent); }
+a:focus,button:focus, input:focus, select:focus, textarea:focus, .form-check-input:focus{
+  outline: 3px solid var(--focus) !important; outline-offset: 2px;
+}
