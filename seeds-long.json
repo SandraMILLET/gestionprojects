@@ -319,7 +319,7 @@
           "tasks": [
             {
               "id": "fdbd0656-1d5f-4fb7-bcde-dc1536314b18",
-              "label": "Title/Meta 20 pages",
+              "label": "Title/Meta + Hn 20 pages",
               "done": false,
               "est_h": 5,
               "tools": "",
@@ -1664,7 +1664,7 @@
                   "done": false
                 },
                 {
-                  "id": "229da85b-f37f-4ca2-82a4-3b30ef107154",
+                  "id": "229da85b-f36f-4ca2-82a4-3b30ef107154",
                   "label": "QA/Tracking",
                   "done": false
                 }

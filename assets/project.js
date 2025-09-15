@@ -62,19 +62,88 @@
     $('#pName').addEventListener('input', e => { project.name = e.target.innerText.trim(); save(); });
     $('#pClient').addEventListener('input', e => { project.client = e.target.innerText.trim(); save(); });
     $('#pDeadline').addEventListener('change', e => { project.deadline = e.target.value; save(); renderHeader(); renderMetrics(); });
-    $('#btnEditDetails').onclick = () => {
-      const firstName = prompt('Prénom du client', project.contact?.firstName || ''); if (firstName === null) return;
-      const lastName = prompt('Nom du client', project.contact?.lastName || ''); if (lastName === null) return;
-      const email = prompt('Email du client', project.contact?.email || ''); if (email === null) return;
-      const phone = prompt('Téléphone du client', project.contact?.phone || ''); if (phone === null) return;
-      const amount = prompt('Montant total €', project.amount || 0); if (amount === null) return;
-      const paid = prompt('Montant payé €', project.paid || 0); if (paid === null) return;
+$('#btnEditDetails').onclick=()=>{
+  // Créer une interface de sélection
+  const choice = prompt(`Que voulez-vous modifier ?
+1 - Montant total
+2 - Montant payé
+3 - Contact client
+4 - Tout modifier
+  
+Tapez le numéro de votre choix :`);
+  
+  if(!choice) return;
+  
+  switch(choice.trim()) {
+    case '1':
+      // Modifier seulement le montant total
+      const newAmount = prompt('Montant total €', project.amount||0);
+      if(newAmount !== null) {
+        project.amount = Number(newAmount)||0;
+        save(); 
+        renderHeader();
+      }
+      break;
+      
+    case '2':
+      // Modifier seulement le montant payé
+      const newPaid = prompt('Montant payé €', project.paid||0);
+      if(newPaid !== null) {
+        project.paid = Number(newPaid)||0;
+        save(); 
+        renderHeader();
+      }
+      break;
+      
+    case '3':
+      // Modifier les infos contact
       if (!project.contact) project.contact = {};
-      project.contact.firstName = firstName; project.contact.lastName = lastName;
-      project.contact.email = email; project.contact.phone = phone;
-      project.amount = Number(amount) || 0; project.paid = Number(paid) || 0;
-      save(); renderHeader();
-    };
+      const firstName = prompt('Prénom du client', project.contact.firstName||'');
+      if(firstName !== null) project.contact.firstName = firstName;
+      
+      const lastName = prompt('Nom du client', project.contact.lastName||'');
+      if(lastName !== null) project.contact.lastName = lastName;
+      
+      const email = prompt('Email du client', project.contact.email||'');
+      if(email !== null) project.contact.email = email;
+      
+      const phone = prompt('Téléphone du client', project.contact.phone||'');
+      if(phone !== null) project.contact.phone = phone;
+      
+      save(); 
+      renderHeader();
+      break;
+      
+    case '4':
+      // Modifier tout (ancien comportement)
+      const firstName2 = prompt('Prénom du client', project.contact?.firstName||''); 
+      if(firstName2===null) return;
+      const lastName2 = prompt('Nom du client', project.contact?.lastName||''); 
+      if(lastName2===null) return;
+      const email2 = prompt('Email du client', project.contact?.email||''); 
+      if(email2===null) return;
+      const phone2 = prompt('Téléphone du client', project.contact?.phone||''); 
+      if(phone2===null) return;
+      const amount2 = prompt('Montant total €', project.amount||0); 
+      if(amount2===null) return;
+      const paid2 = prompt('Montant payé €', project.paid||0); 
+      if(paid2===null) return;
+      
+      if (!project.contact) project.contact = {};
+      project.contact.firstName = firstName2; 
+      project.contact.lastName = lastName2;
+      project.contact.email = email2; 
+      project.contact.phone = phone2;
+      project.amount = Number(amount2)||0; 
+      project.paid = Number(paid2)||0;
+      save(); 
+      renderHeader();
+      break;
+      
+    default:
+      alert('Choix invalide. Utilisez 1, 2, 3 ou 4.');
+  }
+};
     $('#btnStatus').onclick = () => {
       const s = prompt('Statut (Prospection, En cours, En pause, Livré, Facturé, Archivé)', project.status);
       if (s) { project.status = s; save(); renderHeader(); }
