@@ -1,5 +1,5 @@
 (function(){
-  const { getProject, upsertProject, computeProgress, fmtMoney, daysLeft,
+  const { getProject, upsertProject, computeProgressSimple, fmtMoney, daysLeft,
           computeBurndown, updateBurndownJournal, PAGE_TEMPLATES_COMMON, uuid, exportMarkdown, apiFetch, listAllItems } = window.RSM;
   const url = new URL(location.href); const id = url.searchParams.get('id');
   
@@ -20,7 +20,8 @@
   }
 
   function renderHeader(){
-    const prog = computeProgress(project);
+    // UTILISER computeProgressSimple au lieu de computeProgress
+    const prog = computeProgressSimple(project);
     const d = daysLeft(project.deadline);
     $('#projectHeader').innerHTML = `
       <div class="card">
@@ -39,6 +40,12 @@
                 <label class="form-label m-0 me-1">Deadline</label>
                 <input type="date" id="pDeadline" value="${project.deadline}" class="form-control form-control-sm" style="width:fit-content">
                 <span class="badge ${window.RSM.badgeForDays(d)}">J-${d}</span>
+              </div>
+              <!-- BARRE DE PROGRESSION GLOBALE -->
+              <div class="mt-2">
+                <div class="progress progress-thin" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${prog}">
+                  <div class="progress-bar ${prog<34?'bg-danger':prog<67?'bg-warning':'bg-success'}" style="width:${prog}%">${prog}%</div>
+                </div>
               </div>
             </div>
             <div class="text-nowrap">
@@ -75,8 +82,8 @@
 
   function renderMetrics(){
     const {labels, ideal, real} = computeBurndown(project);
-    const {estTotal, estDone} = window.RSM.listAllItems(project);
-    const prog = computeProgress(project);
+    const {estTotal, estDone} = listAllItems(project);
+    const prog = computeProgressSimple(project);
     const approxDone = Math.round(estDone);
     $('#metricsList').innerHTML = `
       <li>Total estimé : <strong>${estTotal} h</strong></li>
@@ -99,14 +106,11 @@
     });
   }
 
-  // NOUVELLE FONCTION : Mise à jour des barres de progression en temps réel
+  // Mise à jour des barres de progression en temps réel
   function updateProgressBars() {
     // Mettre à jour la progression de chaque phase
     (project.phases||[]).forEach((ph, i) => {
-      const phProg = (() => {
-        const { total, done } = window.RSM.listAllItems({phases:[ph]});
-        return total > 0 ? Math.round(done * 100 / total) : 0;
-      })();
+      const phProg = computeProgressSimple({phases:[ph]});
       
       // Trouver et mettre à jour le badge de progression de cette phase
       const phaseHeader = document.querySelector(`[data-bs-target="#c-ph-${ph.id}"] .badge`);
@@ -127,11 +131,8 @@
     (project.phases||[]).forEach((ph, i)=>{
       const pid = 'ph-'+ph.id;
       
-      // Utiliser la progression basée sur les items cochés
-      const phProg = (() => {
-        const { total, done } = window.RSM.listAllItems({phases:[ph]});
-        return total > 0 ? Math.round(done * 100 / total) : 0;
-      })();
+      // Utiliser computeProgressSimple pour cohérence
+      const phProg = computeProgressSimple({phases:[ph]});
       
       const header = `
         <div class="accordion-item">
@@ -247,7 +248,7 @@
     }
   });
 
-  // Gestion des checkboxes - VERSION CORRIGÉE
+  // Gestion des checkboxes
   $('#phasesAcc').addEventListener('change', async (e)=>{
     // Vérifier si c'est bien une checkbox
     if(e.target.type !== 'checkbox') return;

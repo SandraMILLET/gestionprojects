@@ -26,6 +26,7 @@ const badgeForDays = (d)=>{
   if (d<=URGENCY_THRESHOLDS.yellow) return 'deadline-yellow';
   return 'deadline-green';
 };
+
 /* ---------- SVG Sprite Loader (inline for cross-browser) ---------- */
 (async function loadSvgSprite(){
   try{
@@ -39,13 +40,55 @@ const badgeForDays = (d)=>{
   }catch(e){ console.warn('SVG sprite not loaded', e); }
 })();
 
+/* ---------- FONCTION MANQUANTE : listAllItems ---------- */
+function listAllItems(project){
+  let total=0, done=0, estTotal=0, estDone=0, tasksWithDeadline=[];
+  (project.phases||[]).forEach(ph=>{
+    (ph.tasks||[]).forEach(t=>{
+      if (t.deadline) tasksWithDeadline.push(t);
+      
+      // Calcul pour la tâche principale
+      const taskEstH = Number(t.est_h||0);
+      const subsCount = (t.subs||[]).length;
+      
+      if (subsCount === 0) {
+        // Tâche sans sous-tâches : utilise son estimation complète
+        total++; 
+        estTotal += taskEstH;
+        if(t.done){ 
+          done++; 
+          estDone += taskEstH; 
+        }
+      } else {
+        // Tâche avec sous-tâches : répartit l'estimation entre les sous-tâches
+        const estPerSub = taskEstH / subsCount;
+        
+        (t.subs||[]).forEach(s=>{
+          total++;
+          estTotal += estPerSub;
+          if(s.done) {
+            done++;
+            estDone += estPerSub;
+          }
+        });
+      }
+    });
+  });
+  return {total, done, estTotal, estDone, tasksWithDeadline};
+}
 
+/* ---------- Progress calculations ---------- */
+const computeProgress = (project)=>{
+  const { estTotal, estDone } = listAllItems(project);
+  return estTotal > 0 ? Math.round(estDone * 100 / estTotal) : 0;
+};
 
 // Alternative plus simple : utiliser le pourcentage d'items cochés
 function computeProgressSimple(project){
   const { total, done } = listAllItems(project);
   return total > 0 ? Math.round(done * 100 / total) : 0;
 }
+
 /* ---------- Burndown ---------- */
 function computeBurndown(project){
   const {estTotal, estDone} = listAllItems(project);
@@ -120,6 +163,7 @@ async function upsertProject(p){
     } catch(e){ console.error('API save failed', e); }
   }
 }
+
 /* ---------- Import/Export ---------- */
 function exportMarkdown(project){
   const lines=[];
@@ -144,6 +188,7 @@ function exportMarkdown(project){
   const blob = new Blob([lines.join('\n')], {type:'text/markdown'});
   const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${project.name.replace(/\s+/g,'_')}.md`; a.click();
 }
+
 function exportICS(items){
   const pad=v=>String(v).padStart(2,'0');
   const dt=(d,h)=>{ const x=new Date(d); x.setHours(h,0,0,0);
@@ -511,7 +556,6 @@ const ALL_TEMPLATES = {
     'Formation': FORMATION_TEMPLATE
 };
 
-
 /* ---------- Seeds (7 projets) ---------- */
 function seedProject({name, client, type, status, deadline, amount=0, paid=0, phases}){
   return {
@@ -550,7 +594,7 @@ function seed(){
       ]
     }),
     seedProject({
-      name:'Atelier Mer’elle', client:'Stéphanie', type:'WooCommerce', status:'En cours', deadline:addDaysISO(35),
+      name:"Atelier Mer'elle", client:'Stéphanie', type:'WooCommerce', status:'En cours', deadline:addDaysISO(35),
       amount:3200, paid:300,
       phases:[
         simplePhase('Cadrage',[t('Cahier des charges',2)]),
@@ -640,10 +684,9 @@ function getGcalService() {
 window.RSM = {
   THEME, STORAGE_KEY, URGENCY_THRESHOLDS, ENABLE_GCAL, DEFAULT_EVENT_HOUR,
   loadState, saveState, getProject, upsertProject, computeProgress, computeBurndown,
-  updateBurndownJournal, exportMarkdown, exportICS,
+  updateBurndownJournal, exportMarkdown, exportICS, computeProgressSimple,
   PAGE_TEMPLATES_COMMON, ALL_TEMPLATES, uuid, fmtMoney, daysLeft, badgeForDays,
-  apiFetch,
-  getClientAuth, getGcalService, listAllItems
+  apiFetch, getClientAuth, getGcalService, listAllItems
 };
 window.gapiLoaded = ()=>{};
 window.gisLoaded = ()=>{};
