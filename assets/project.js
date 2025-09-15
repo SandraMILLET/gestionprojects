@@ -33,8 +33,7 @@
                 <span class="text-muted">—</span>
                 <div class="fw-medium" contenteditable="true" id="pClient" aria-label="Nom du client">${project.client}</div>
                 <span class="badge badge-type">${project.type}</span>
-                <span class="badge badge-status-${project.status.replaceAll(' ','\\ ')}">${project.status}</span>
-              </div>
+<span class="badge badge-status-${project.status.replace(/ /g,'\\ ')}">${project.status}</span>              </div>
               <div class="small mt-2 d-flex align-items-center gap-2 flex-wrap">
                 <svg class="icon"><use href="assets/icons.svg#calendar"></use></svg>
                 <label class="form-label m-0 me-1">Deadline</label>
