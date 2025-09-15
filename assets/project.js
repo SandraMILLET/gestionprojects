@@ -73,7 +73,7 @@
                                   if(s) { project.status=s; save(); renderHeader(); } };
   }
 
-function renderMetrics(){
+  function renderMetrics(){
     const {labels, ideal, real} = computeBurndown(project);
     const {estTotal, estDone} = window.RSM.listAllItems(project);
     const prog = computeProgress(project);
@@ -97,17 +97,42 @@ function renderMetrics(){
         scales:{ y:{ beginAtZero:true } }
       }
     });
-}
+  }
+
+  // NOUVELLE FONCTION : Mise à jour des barres de progression en temps réel
+  function updateProgressBars() {
+    // Mettre à jour la progression de chaque phase
+    (project.phases||[]).forEach((ph, i) => {
+      const phProg = (() => {
+        const { total, done } = window.RSM.listAllItems({phases:[ph]});
+        return total > 0 ? Math.round(done * 100 / total) : 0;
+      })();
+      
+      // Trouver et mettre à jour le badge de progression de cette phase
+      const phaseHeader = document.querySelector(`[data-bs-target="#c-ph-${ph.id}"] .badge`);
+      if(phaseHeader) {
+        phaseHeader.textContent = `${phProg}%`;
+        phaseHeader.className = `ms-auto badge ${phProg<34?'bg-danger':phProg<67?'bg-warning':'bg-success'}`;
+      }
+    });
+    
+    // Mettre à jour la progression globale dans le header
+    renderHeader();
+    renderMetrics();
+  }
 
   function renderPhases(){
     const acc = $('#phasesAcc');
     acc.innerHTML = '';
     (project.phases||[]).forEach((ph, i)=>{
       const pid = 'ph-'+ph.id;
+      
+      // Utiliser la progression basée sur les items cochés
       const phProg = (() => {
-  const { total, done } = window.RSM.listAllItems({phases:[ph]});
-  return total > 0 ? Math.round(done * 100 / total) : 0;
-})();
+        const { total, done } = window.RSM.listAllItems({phases:[ph]});
+        return total > 0 ? Math.round(done * 100 / total) : 0;
+      })();
+      
       const header = `
         <div class="accordion-item">
           <h2 class="accordion-header" id="h-${pid}">
@@ -157,6 +182,7 @@ function renderMetrics(){
         ${subs ? `<ul class="list-unstyled mt-2">${subs}</ul>` : ''}
       </li>`;
     }).join('') || '<li class="list-group-item text-muted">Aucune tâche</li>';
+    
     $$('[data-task-deadline]', ul).forEach(el => {
       el.addEventListener('change', (e) => {
         const t = findTask(e.target.dataset.taskDeadline);
@@ -166,8 +192,15 @@ function renderMetrics(){
     });
   }
 
+  // Gestion des événements - boutons d'action
   $('#phasesAcc').addEventListener('click', async (e)=>{
-    const btn = e.target.closest('[data-act]'); if(!btn) return;
+    const btn = e.target.closest('[data-act]'); 
+    if(!btn) return;
+    
+    // Empêcher la propagation pour éviter de fermer l'accordéon
+    e.stopPropagation();
+    e.preventDefault();
+    
     const act = btn.dataset.act;
     if(act==='addTask'){
       const ph = project.phases.find(x=>x.id===btn.dataset.ph);
@@ -179,50 +212,102 @@ function renderMetrics(){
       save(); renderPhases(); renderHeader(); renderMetrics();
     }
     if(act==='setEst'){
-      const t = findTask(btn.dataset.task); const v=prompt('Estimation (h)', t.est_h||0); if(v!==null){ t.est_h=Number(v)||0; save(); renderPhases(); renderMetrics(); }
+      const t = findTask(btn.dataset.task); 
+      const v=prompt('Estimation (h)', t.est_h||0); 
+      if(v!==null){ 
+        t.est_h=Number(v)||0; 
+        save(); 
+        renderPhases(); 
+        renderMetrics(); 
+      }
     }
     if(act==='addSub'){
       const t = findTask(btn.dataset.task);
-      t.subs = t.subs||[]; t.subs.push({id:uuid(), label:'Sous-tâche', done:false});
-      save(); renderPhases(); renderHeader(); renderMetrics();
+      t.subs = t.subs||[]; 
+      t.subs.push({id:uuid(), label:'Sous-tâche', done:false});
+      save(); 
+      renderPhases(); 
+      renderHeader(); 
+      renderMetrics();
     }
     if(act==='delTask'){
       project.phases.forEach(ph=>{ ph.tasks = ph.tasks.filter(t=>t.id!==btn.dataset.task); });
-      save(); renderPhases(); renderHeader(); renderMetrics();
+      save(); 
+      renderPhases(); 
+      renderHeader(); 
+      renderMetrics();
     }
     if(act==='delSub'){
       const t = findTask(btn.dataset.task);
       t.subs = (t.subs||[]).filter(s=>s.id!==btn.dataset.sub);
-      save(); renderPhases(); renderHeader(); renderMetrics();
+      save(); 
+      renderPhases(); 
+      renderHeader(); 
+      renderMetrics();
     }
   });
 
+  // Gestion des checkboxes - VERSION CORRIGÉE
   $('#phasesAcc').addEventListener('change', async (e)=>{
-  const tId = e.target.getAttribute('data-task');
-  const sId = e.target.getAttribute('data-sub');
-  if(tId && !sId){
-    const t = findTask(tId); if(t) t.done = e.target.checked; save(); 
-  } else if (tId && sId){
-    const t = findTask(tId); const s = (t.subs||[]).find(x=>x.id===sId); if(s) s.done = e.target.checked; save(); 
-  }
-  renderHeader(); 
-  renderMetrics(); 
-  renderPhases();
-});
+    // Vérifier si c'est bien une checkbox
+    if(e.target.type !== 'checkbox') return;
+    
+    // Empêcher la propagation pour éviter de fermer l'accordéon
+    e.stopPropagation();
+    
+    const tId = e.target.getAttribute('data-task');
+    const sId = e.target.getAttribute('data-sub');
+    
+    if(tId && !sId){
+      // Checkbox d'une tâche principale
+      const t = findTask(tId); 
+      if(t) {
+        t.done = e.target.checked;
+        save(); 
+        updateProgressBars(); // Mise à jour en temps réel
+      }
+    } else if (tId && sId){
+      // Checkbox d'une sous-tâche
+      const t = findTask(tId); 
+      const s = (t.subs||[]).find(x=>x.id===sId); 
+      if(s) {
+        s.done = e.target.checked;
+        save(); 
+        updateProgressBars(); // Mise à jour en temps réel
+      }
+    }
+  });
 
+  // Gestion de l'édition de texte 
   $('#phasesAcc').addEventListener('input', async (e)=>{
     const tId = e.target.getAttribute('data-edit-task');
     const sId = e.target.getAttribute('data-edit-sub');
     const phNameId = e.target.classList.contains('ph-name') ? e.target.dataset.phid : null;
-    if(tId){ const t = findTask(tId); if(t) t.label = e.target.innerText.trim(); save(); }
-    if(sId){ const t = findTask(e.target.getAttribute('data-task')); const s=(t.subs||[]).find(x=>x.id===sId); if(s) s.label=e.target.innerText.trim(); save(); }
-    if(phNameId){ const ph = project.phases.find(x=>x.id===phNameId); if(ph) ph.name=e.target.innerText.trim(); save(); }
+    
+    if(tId){ 
+      const t = findTask(tId); 
+      if(t) t.label = e.target.innerText.trim(); 
+      save(); 
+    }
+    if(sId){ 
+      const t = findTask(e.target.getAttribute('data-task')); 
+      const s=(t.subs||[]).find(x=>x.id===sId); 
+      if(s) s.label=e.target.innerText.trim(); 
+      save(); 
+    }
+    if(phNameId){ 
+      const ph = project.phases.find(x=>x.id===phNameId); 
+      if(ph) ph.name=e.target.innerText.trim(); 
+      save(); 
+    }
   });
 
+  // Autres boutons
   $('#btnAddPhase').onclick = ()=>{
     project.phases.push({id:uuid(), name:'Nouvelle phase', tasks:[]});
     save(); renderPhases();
   };
+  
   $('#btnAddPageShortcut').onclick = ()=>{
     ensurePagesPhase();
     const name = prompt('Nom de la page (ex. Accueil)'); if(!name) return;
@@ -231,16 +316,22 @@ function renderMetrics(){
     save(); renderPhases(); renderHeader(); renderMetrics();
   };
 
-  // Correction: La zone de texte est maintenant initialisée dans la fonction init()
-  $('#btnRecalc').onclick = ()=>{ updateBurndownJournal(project); save(); renderMetrics(); };
+  $('#btnRecalc').onclick = ()=>{ 
+    updateBurndownJournal(project); 
+    save(); 
+    renderMetrics(); 
+  };
+  
   $('#btnExportMd').onclick = ()=> exportMarkdown(project);
 
+  // Fonctions utilitaires
   function ensurePagesPhase(){
     if(!project.phases.find(x=>x.name.toLowerCase()==='pages')){
       project.phases.push({id:uuid(), name:'Pages', tasks:[]});
       save();
     }
   }
+  
   function findTask(id){
     for(const ph of project.phases){
       const t = (ph.tasks||[]).find(t=>t.id===id);
@@ -248,6 +339,7 @@ function renderMetrics(){
     }
     return null;
   }
+  
   async function save(){ 
     await upsertProject(project); 
   }
