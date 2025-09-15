@@ -27,18 +27,7 @@ const badgeForDays = (d)=>{
   return 'deadline-green';
 };
 
-/* ---------- SVG Sprite Loader (inline for cross-browser) ---------- */
-(async function loadSvgSprite(){
-  try{
-    const res = await fetch('./assets/icons.svg', {cache:'no-store'});
-    const svg = await res.text();
-    const holder = document.createElement('div');
-    holder.setAttribute('aria-hidden','true');
-    holder.style.position='absolute'; holder.style.width='0'; holder.style.height='0'; holder.style.overflow='hidden';
-    holder.innerHTML = svg;
-    document.body.prepend(holder);
-  }catch(e){ console.warn('SVG sprite not loaded', e); }
-})();
+
 
 /* ---------- FONCTION MANQUANTE : listAllItems ---------- */
 function listAllItems(project){

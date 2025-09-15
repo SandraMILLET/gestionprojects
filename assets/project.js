@@ -1,25 +1,25 @@
-(function(){
+(function () {
   const { getProject, upsertProject, computeProgressSimple, fmtMoney, daysLeft,
-          computeBurndown, updateBurndownJournal, PAGE_TEMPLATES_COMMON, uuid, exportMarkdown, apiFetch, listAllItems } = window.RSM;
+    computeBurndown, updateBurndownJournal, PAGE_TEMPLATES_COMMON, uuid, exportMarkdown, apiFetch, listAllItems } = window.RSM;
   const url = new URL(location.href); const id = url.searchParams.get('id');
-  
+
   let project;
 
   async function init() {
     project = await getProject(id);
-    if(!project){ 
-      document.body.innerHTML = '<main class="container py-5"><div class="alert alert-danger">Projet introuvable.</div></main>'; 
-      throw new Error('No project'); 
+    if (!project) {
+      document.body.innerHTML = '<main class="container py-5"><div class="alert alert-danger">Projet introuvable.</div></main>';
+      throw new Error('No project');
     }
-    renderHeader(); 
-    renderMetrics(); 
+    renderHeader();
+    renderMetrics();
     renderPhases();
-    
-    $('#notes').value = project.notes||'';
-    $('#notes').addEventListener('input', e=>{ project.notes=e.target.value; save(); });
+
+    $('#notes').value = project.notes || '';
+    $('#notes').addEventListener('input', e => { project.notes = e.target.value; save(); });
   }
 
-  function renderHeader(){
+  function renderHeader() {
     // UTILISER computeProgressSimple au lieu de computeProgress
     const prog = computeProgressSimple(project);
     const d = daysLeft(project.deadline);
@@ -33,9 +33,9 @@
                 <span class="text-muted">—</span>
                 <div class="fw-medium" contenteditable="true" id="pClient" aria-label="Nom du client">${project.client}</div>
                 <span class="badge badge-type">${project.type}</span>
-<span class="badge badge-status-${project.status.replace(/ /g,'\\ ')}">${project.status}</span>              </div>
+<span class="badge badge-status-${project.status.replace(/ /g, '\\ ')}">${project.status}</span>              </div>
               <div class="small mt-2 d-flex align-items-center gap-2 flex-wrap">
-                <svg class="icon"><use href="assets/icons.svg#calendar"></use></svg>
+                📅
                 <label class="form-label m-0 me-1">Deadline</label>
                 <input type="date" id="pDeadline" value="${project.deadline}" class="form-control form-control-sm" style="width:fit-content">
                 <span class="badge ${window.RSM.badgeForDays(d)}">J-${d}</span>
@@ -43,14 +43,14 @@
               <!-- BARRE DE PROGRESSION GLOBALE -->
               <div class="mt-2">
                 <div class="progress progress-thin" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${prog}">
-                  <div class="progress-bar ${prog<34?'bg-danger':prog<67?'bg-warning':'bg-success'}" style="width:${prog}%">${prog}%</div>
+                  <div class="progress-bar ${prog < 34 ? 'bg-danger' : prog < 67 ? 'bg-warning' : 'bg-success'}" style="width:${prog}%">${prog}%</div>
                 </div>
               </div>
             </div>
             <div class="text-nowrap">
-              <div class="small"><svg class="icon"><use href="assets/icons.svg#euro"></use></svg> Montant <strong>${fmtMoney(project.amount)}</strong></div>
+              <div class="small">💰 Montant <strong>${fmtMoney(project.amount)}</strong></div>
               <div class="small">Payé <strong>${fmtMoney(project.paid)}</strong></div>
-              <div class="small">Reste <strong>${fmtMoney((project.amount||0)-(project.paid||0))}</strong></div>
+              <div class="small">Reste <strong>${fmtMoney((project.amount || 0) - (project.paid || 0))}</strong></div>
               <div class="mt-2 d-flex gap-2">
                 <button class="btn btn-outline-secondary btn-sm" id="btnEditDetails">Éditer</button>
                 <button class="btn btn-outline-secondary btn-sm" id="btnStatus">Statut</button>
@@ -59,48 +59,52 @@
           </div>
         </div>
       </div>`;
-    $('#pName').addEventListener('input', e=>{ project.name=e.target.innerText.trim(); save(); });
-    $('#pClient').addEventListener('input', e=>{ project.client=e.target.innerText.trim(); save(); });
-    $('#pDeadline').addEventListener('change', e=>{ project.deadline=e.target.value; save(); renderHeader(); renderMetrics(); });
-    $('#btnEditDetails').onclick=()=>{
-      const firstName = prompt('Prénom du client', project.contact?.firstName||''); if(firstName===null) return;
-      const lastName = prompt('Nom du client', project.contact?.lastName||''); if(lastName===null) return;
-      const email = prompt('Email du client', project.contact?.email||''); if(email===null) return;
-      const phone = prompt('Téléphone du client', project.contact?.phone||''); if(phone===null) return;
-      const amount = prompt('Montant total €', project.amount||0); if(amount===null) return;
-      const paid = prompt('Montant payé €', project.paid||0); if(paid===null) return;
+    $('#pName').addEventListener('input', e => { project.name = e.target.innerText.trim(); save(); });
+    $('#pClient').addEventListener('input', e => { project.client = e.target.innerText.trim(); save(); });
+    $('#pDeadline').addEventListener('change', e => { project.deadline = e.target.value; save(); renderHeader(); renderMetrics(); });
+    $('#btnEditDetails').onclick = () => {
+      const firstName = prompt('Prénom du client', project.contact?.firstName || ''); if (firstName === null) return;
+      const lastName = prompt('Nom du client', project.contact?.lastName || ''); if (lastName === null) return;
+      const email = prompt('Email du client', project.contact?.email || ''); if (email === null) return;
+      const phone = prompt('Téléphone du client', project.contact?.phone || ''); if (phone === null) return;
+      const amount = prompt('Montant total €', project.amount || 0); if (amount === null) return;
+      const paid = prompt('Montant payé €', project.paid || 0); if (paid === null) return;
       if (!project.contact) project.contact = {};
       project.contact.firstName = firstName; project.contact.lastName = lastName;
       project.contact.email = email; project.contact.phone = phone;
-      project.amount=Number(amount)||0; project.paid=Number(paid)||0;
+      project.amount = Number(amount) || 0; project.paid = Number(paid) || 0;
       save(); renderHeader();
     };
-    $('#btnStatus').onclick=()=>{ const s=prompt('Statut (Prospection, En cours, En pause, Livré, Facturé, Archivé)', project.status);
-                                  if(s) { project.status=s; save(); renderHeader(); } };
+    $('#btnStatus').onclick = () => {
+      const s = prompt('Statut (Prospection, En cours, En pause, Livré, Facturé, Archivé)', project.status);
+      if (s) { project.status = s; save(); renderHeader(); }
+    };
   }
 
-  function renderMetrics(){
-    const {labels, ideal, real} = computeBurndown(project);
-    const {estTotal, estDone} = listAllItems(project);
+  function renderMetrics() {
+    const { labels, ideal, real } = computeBurndown(project);
+    const { estTotal, estDone } = listAllItems(project);
     const prog = computeProgressSimple(project);
     const approxDone = Math.round(estDone);
     $('#metricsList').innerHTML = `
       <li>Total estimé : <strong>${estTotal} h</strong></li>
       <li>Fait (selon avancement) : <strong>${approxDone} h</strong></li>
-      <li>Restant (selon avancement) : <strong>${Math.max(0,estTotal-approxDone)} h</strong></li>`;
+      <li>Restant (selon avancement) : <strong>${Math.max(0, estTotal - approxDone)} h</strong></li>`;
     const ctx = $('#burndown');
-    if(window._bdChart) window._bdChart.destroy();
+    if (window._bdChart) window._bdChart.destroy();
     window._bdChart = new Chart(ctx, {
-      type:'line',
-      data:{ labels, datasets:[
-        { label:'Idéal', data:ideal, borderColor: window.RSM.THEME.blue, backgroundColor:'transparent' },
-        { label:'Réel', data:real, borderColor: window.RSM.THEME.accent, backgroundColor:'transparent' }
-      ]},
-      options:{
-        responsive:true,
-        animation:false,
-        plugins:{legend:{display:true}},
-        scales:{ y:{ beginAtZero:true } }
+      type: 'line',
+      data: {
+        labels, datasets: [
+          { label: 'Idéal', data: ideal, borderColor: window.RSM.THEME.blue, backgroundColor: 'transparent' },
+          { label: 'Réel', data: real, borderColor: window.RSM.THEME.accent, backgroundColor: 'transparent' }
+        ]
+      },
+      options: {
+        responsive: true,
+        animation: false,
+        plugins: { legend: { display: true } },
+        scales: { y: { beginAtZero: true } }
       }
     });
   }
@@ -108,44 +112,44 @@
   // Mise à jour des barres de progression en temps réel
   function updateProgressBars() {
     // Mettre à jour la progression de chaque phase
-    (project.phases||[]).forEach((ph, i) => {
-      const phProg = computeProgressSimple({phases:[ph]});
-      
+    (project.phases || []).forEach((ph, i) => {
+      const phProg = computeProgressSimple({ phases: [ph] });
+
       // Trouver et mettre à jour le badge de progression de cette phase
       const phaseHeader = document.querySelector(`[data-bs-target="#c-ph-${ph.id}"] .badge`);
-      if(phaseHeader) {
+      if (phaseHeader) {
         phaseHeader.textContent = `${phProg}%`;
-        phaseHeader.className = `ms-auto badge ${phProg<34?'bg-danger':phProg<67?'bg-warning':'bg-success'}`;
+        phaseHeader.className = `ms-auto badge ${phProg < 34 ? 'bg-danger' : phProg < 67 ? 'bg-warning' : 'bg-success'}`;
       }
     });
-    
+
     // Mettre à jour la progression globale dans le header
     renderHeader();
     renderMetrics();
   }
 
-  function renderPhases(){
+  function renderPhases() {
     const acc = $('#phasesAcc');
     acc.innerHTML = '';
-    (project.phases||[]).forEach((ph, i)=>{
-      const pid = 'ph-'+ph.id;
-      
+    (project.phases || []).forEach((ph, i) => {
+      const pid = 'ph-' + ph.id;
+
       // Utiliser computeProgressSimple pour cohérence
-      const phProg = computeProgressSimple({phases:[ph]});
-      
+      const phProg = computeProgressSimple({ phases: [ph] });
+
       const header = `
         <div class="accordion-item">
           <h2 class="accordion-header" id="h-${pid}">
-            <button class="accordion-button ${i? 'collapsed':''}" type="button" data-bs-toggle="collapse" data-bs-target="#c-${pid}" aria-expanded="${!i}" aria-controls="c-${pid}">
-              <span class="me-2">Phase ${i+1} — </span><strong contenteditable="true" data-phid="${ph.id}" class="ph-name">${ph.name}</strong>
-              <span class="ms-auto badge ${phProg<34?'bg-danger':phProg<67?'bg-warning':'bg-success'}">${phProg}%</span>
+            <button class="accordion-button ${i ? 'collapsed' : ''}" type="button" data-bs-toggle="collapse" data-bs-target="#c-${pid}" aria-expanded="${!i}" aria-controls="c-${pid}">
+              <span class="me-2">Phase ${i + 1} — </span><strong contenteditable="true" data-phid="${ph.id}" class="ph-name">${ph.name}</strong>
+              <span class="ms-auto badge ${phProg < 34 ? 'bg-danger' : phProg < 67 ? 'bg-warning' : 'bg-success'}">${phProg}%</span>
             </button>
           </h2>
-          <div id="c-${pid}" class="accordion-collapse collapse ${i? '':'show'}" data-bs-parent="#phasesAcc">
+          <div id="c-${pid}" class="accordion-collapse collapse ${i ? '' : 'show'}" data-bs-parent="#phasesAcc">
             <div class="accordion-body">
               <div class="d-flex gap-2 mb-2">
-                <button class="btn btn-outline-secondary btn-sm" data-act="addTask" data-ph="${ph.id}"><svg class="icon"><use href="assets/icons.svg#plus"></use></svg> Tâche</button>
-                <button class="btn btn-outline-danger btn-sm ms-auto" data-act="delPhase" data-ph="${ph.id}"><svg class="icon"><use href="assets/icons.svg#trash"></use></svg> Supprimer la phase</button>
+                <button class="btn btn-outline-secondary btn-sm" data-act="addTask" data-ph="${ph.id}">➕ Tâche</button>
+                <button class="btn btn-outline-danger btn-sm ms-auto" data-act="delPhase" data-ph="${ph.id}">🗑️ Supprimer la phase</button>
               </div>
               <ul class="list-group" id="tasks-${ph.id}"></ul>
             </div>
@@ -156,33 +160,33 @@
     });
   }
 
-  function renderTasks(ph){
-    const ul = $('#tasks-'+ph.id);
-    ul.innerHTML = (ph.tasks||[]).map(t=>{
-      const subs = (t.subs||[]).map(s=>`
+  function renderTasks(ph) {
+    const ul = $('#tasks-' + ph.id);
+    ul.innerHTML = (ph.tasks || []).map(t => {
+      const subs = (t.subs || []).map(s => `
         <li class="list-group-item ps-5 d-flex align-items-center gap-2">
-          <input type="checkbox" class="form-check-input me-2" data-sub="${s.id}" data-task="${t.id}" ${s.done?'checked':''} aria-label="Sous-tâche ${s.label}">
+          <input type="checkbox" class="form-check-input me-2" data-sub="${s.id}" data-task="${t.id}" ${s.done ? 'checked' : ''} aria-label="Sous-tâche ${s.label}">
           <span class="flex-grow-1" contenteditable="true" data-edit-sub="${s.id}" data-task="${t.id}">${s.label}</span>
-          <button class="btn btn-sm btn-outline-danger" data-act="delSub" data-sub="${s.id}" data-task="${t.id}" aria-label="Supprimer la sous-tâche"><svg class="icon"><use href="assets/icons.svg#trash"></use></svg></button>
+          <button class="btn btn-sm btn-outline-danger" data-act="delSub" data-sub="${s.id}" data-task="${t.id}" aria-label="Supprimer la sous-tâche">🗑️</button>
         </li>`).join('');
 
       return `<li class="list-group-item">
         <div class="d-flex align-items-center gap-2">
-          <input type="checkbox" class="form-check-input me-2" data-task="${t.id}" ${t.done?'checked':''} aria-label="Tâche ${t.label}">
+          <input type="checkbox" class="form-check-input me-2" data-task="${t.id}" ${t.done ? 'checked' : ''} aria-label="Tâche ${t.label}">
           <span class="flex-grow-1" contenteditable="true" data-edit-task="${t.id}">${t.label}</span>
-          <span class="badge text-bg-light" title="Estimation heures">⏱ ${Number(t.est_h||0)}h</span>
+          <span class="badge text-bg-light" title="Estimation heures">⏱ ${Number(t.est_h || 0)}h</span>
           <div class="input-group input-group-sm ms-2" style="width:120px;">
-            <span class="input-group-text"><svg class="icon"><use href="assets/icons.svg#calendar"></use></svg></span>
+            <span class="input-group-text">📅</span>
             <input type="date" class="form-control" data-task-deadline="${t.id}" value="${t.deadline || ''}" aria-label="Date limite de la tâche">
           </div>
           <button class="btn btn-sm btn-outline-secondary" data-act="setEst" data-task="${t.id}" title="Définir estimation">⏱</button>
-          <button class="btn btn-sm btn-outline-secondary" data-act="addSub" data-task="${t.id}"><svg class="icon"><use href="assets/icons.svg#plus"></use></svg></button>
-          <button class="btn btn-sm btn-outline-danger" data-act="delTask" data-task="${t.id}"><svg class="icon"><use href="assets/icons.svg#trash"></use></svg></button>
+          <button class="btn btn-sm btn-outline-secondary" data-act="addSub" data-task="${t.id}">➕</button>
+          <button class="btn btn-sm btn-outline-danger" data-act="delTask" data-task="${t.id}">🗑️</button>
         </div>
         ${subs ? `<ul class="list-unstyled mt-2">${subs}</ul>` : ''}
       </li>`;
     }).join('') || '<li class="list-group-item text-muted">Aucune tâche</li>';
-    
+
     $$('[data-task-deadline]', ul).forEach(el => {
       el.addEventListener('change', (e) => {
         const t = findTask(e.target.dataset.taskDeadline);
@@ -193,155 +197,155 @@
   }
 
   // Gestion des événements - boutons d'action
-  $('#phasesAcc').addEventListener('click', async (e)=>{
-    const btn = e.target.closest('[data-act]'); 
-    if(!btn) return;
-    
+  $('#phasesAcc').addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-act]');
+    if (!btn) return;
+
     // Empêcher la propagation pour éviter de fermer l'accordéon
     e.stopPropagation();
     e.preventDefault();
-    
+
     const act = btn.dataset.act;
-    if(act==='addTask'){
-      const ph = project.phases.find(x=>x.id===btn.dataset.ph);
-      ph.tasks.push({id:uuid(), label:'Nouvelle tâche', done:false, est_h:1, tools:'', subs:[], deadline:''});
+    if (act === 'addTask') {
+      const ph = project.phases.find(x => x.id === btn.dataset.ph);
+      ph.tasks.push({ id: uuid(), label: 'Nouvelle tâche', done: false, est_h: 1, tools: '', subs: [], deadline: '' });
       save(); renderPhases(); renderHeader(); renderMetrics();
     }
-    if(act==='delPhase'){
-      project.phases = project.phases.filter(x=>x.id!==btn.dataset.ph);
+    if (act === 'delPhase') {
+      project.phases = project.phases.filter(x => x.id !== btn.dataset.ph);
       save(); renderPhases(); renderHeader(); renderMetrics();
     }
-    if(act==='setEst'){
-      const t = findTask(btn.dataset.task); 
-      const v=prompt('Estimation (h)', t.est_h||0); 
-      if(v!==null){ 
-        t.est_h=Number(v)||0; 
-        save(); 
-        renderPhases(); 
-        renderMetrics(); 
+    if (act === 'setEst') {
+      const t = findTask(btn.dataset.task);
+      const v = prompt('Estimation (h)', t.est_h || 0);
+      if (v !== null) {
+        t.est_h = Number(v) || 0;
+        save();
+        renderPhases();
+        renderMetrics();
       }
     }
-    if(act==='addSub'){
+    if (act === 'addSub') {
       const t = findTask(btn.dataset.task);
-      t.subs = t.subs||[]; 
-      t.subs.push({id:uuid(), label:'Sous-tâche', done:false});
-      save(); 
-      renderPhases(); 
-      renderHeader(); 
+      t.subs = t.subs || [];
+      t.subs.push({ id: uuid(), label: 'Sous-tâche', done: false });
+      save();
+      renderPhases();
+      renderHeader();
       renderMetrics();
     }
-    if(act==='delTask'){
-      project.phases.forEach(ph=>{ ph.tasks = ph.tasks.filter(t=>t.id!==btn.dataset.task); });
-      save(); 
-      renderPhases(); 
-      renderHeader(); 
+    if (act === 'delTask') {
+      project.phases.forEach(ph => { ph.tasks = ph.tasks.filter(t => t.id !== btn.dataset.task); });
+      save();
+      renderPhases();
+      renderHeader();
       renderMetrics();
     }
-    if(act==='delSub'){
+    if (act === 'delSub') {
       const t = findTask(btn.dataset.task);
-      t.subs = (t.subs||[]).filter(s=>s.id!==btn.dataset.sub);
-      save(); 
-      renderPhases(); 
-      renderHeader(); 
+      t.subs = (t.subs || []).filter(s => s.id !== btn.dataset.sub);
+      save();
+      renderPhases();
+      renderHeader();
       renderMetrics();
     }
   });
 
   // Gestion des checkboxes
-  $('#phasesAcc').addEventListener('change', async (e)=>{
+  $('#phasesAcc').addEventListener('change', async (e) => {
     // Vérifier si c'est bien une checkbox
-    if(e.target.type !== 'checkbox') return;
-    
+    if (e.target.type !== 'checkbox') return;
+
     // Empêcher la propagation pour éviter de fermer l'accordéon
     e.stopPropagation();
-    
+
     const tId = e.target.getAttribute('data-task');
     const sId = e.target.getAttribute('data-sub');
-    
-    if(tId && !sId){
+
+    if (tId && !sId) {
       // Checkbox d'une tâche principale
-      const t = findTask(tId); 
-      if(t) {
+      const t = findTask(tId);
+      if (t) {
         t.done = e.target.checked;
-        save(); 
+        save();
         updateProgressBars(); // Mise à jour en temps réel
       }
-    } else if (tId && sId){
+    } else if (tId && sId) {
       // Checkbox d'une sous-tâche
-      const t = findTask(tId); 
-      const s = (t.subs||[]).find(x=>x.id===sId); 
-      if(s) {
+      const t = findTask(tId);
+      const s = (t.subs || []).find(x => x.id === sId);
+      if (s) {
         s.done = e.target.checked;
-        save(); 
+        save();
         updateProgressBars(); // Mise à jour en temps réel
       }
     }
   });
 
   // Gestion de l'édition de texte 
-  $('#phasesAcc').addEventListener('input', async (e)=>{
+  $('#phasesAcc').addEventListener('input', async (e) => {
     const tId = e.target.getAttribute('data-edit-task');
     const sId = e.target.getAttribute('data-edit-sub');
     const phNameId = e.target.classList.contains('ph-name') ? e.target.dataset.phid : null;
-    
-    if(tId){ 
-      const t = findTask(tId); 
-      if(t) t.label = e.target.innerText.trim(); 
-      save(); 
+
+    if (tId) {
+      const t = findTask(tId);
+      if (t) t.label = e.target.innerText.trim();
+      save();
     }
-    if(sId){ 
-      const t = findTask(e.target.getAttribute('data-task')); 
-      const s=(t.subs||[]).find(x=>x.id===sId); 
-      if(s) s.label=e.target.innerText.trim(); 
-      save(); 
+    if (sId) {
+      const t = findTask(e.target.getAttribute('data-task'));
+      const s = (t.subs || []).find(x => x.id === sId);
+      if (s) s.label = e.target.innerText.trim();
+      save();
     }
-    if(phNameId){ 
-      const ph = project.phases.find(x=>x.id===phNameId); 
-      if(ph) ph.name=e.target.innerText.trim(); 
-      save(); 
+    if (phNameId) {
+      const ph = project.phases.find(x => x.id === phNameId);
+      if (ph) ph.name = e.target.innerText.trim();
+      save();
     }
   });
 
   // Autres boutons
-  $('#btnAddPhase').onclick = ()=>{
-    project.phases.push({id:uuid(), name:'Nouvelle phase', tasks:[]});
+  $('#btnAddPhase').onclick = () => {
+    project.phases.push({ id: uuid(), name: 'Nouvelle phase', tasks: [] });
     save(); renderPhases();
   };
-  
-  $('#btnAddPageShortcut').onclick = ()=>{
+
+  $('#btnAddPageShortcut').onclick = () => {
     ensurePagesPhase();
-    const name = prompt('Nom de la page (ex. Accueil)'); if(!name) return;
-    const pages = project.phases.find(x=>x.name.toLowerCase()==='pages');
+    const name = prompt('Nom de la page (ex. Accueil)'); if (!name) return;
+    const pages = project.phases.find(x => x.name.toLowerCase() === 'pages');
     pages.tasks.push(PAGE_TEMPLATES_COMMON(name));
     save(); renderPhases(); renderHeader(); renderMetrics();
   };
 
-  $('#btnRecalc').onclick = ()=>{ 
-    updateBurndownJournal(project); 
-    save(); 
-    renderMetrics(); 
+  $('#btnRecalc').onclick = () => {
+    updateBurndownJournal(project);
+    save();
+    renderMetrics();
   };
-  
-  $('#btnExportMd').onclick = ()=> exportMarkdown(project);
+
+  $('#btnExportMd').onclick = () => exportMarkdown(project);
 
   // Fonctions utilitaires
-  function ensurePagesPhase(){
-    if(!project.phases.find(x=>x.name.toLowerCase()==='pages')){
-      project.phases.push({id:uuid(), name:'Pages', tasks:[]});
+  function ensurePagesPhase() {
+    if (!project.phases.find(x => x.name.toLowerCase() === 'pages')) {
+      project.phases.push({ id: uuid(), name: 'Pages', tasks: [] });
       save();
     }
   }
-  
-  function findTask(id){
-    for(const ph of project.phases){
-      const t = (ph.tasks||[]).find(t=>t.id===id);
-      if(t) return t;
+
+  function findTask(id) {
+    for (const ph of project.phases) {
+      const t = (ph.tasks || []).find(t => t.id === id);
+      if (t) return t;
     }
     return null;
   }
-  
-  async function save(){ 
-    await upsertProject(project); 
+
+  async function save() {
+    await upsertProject(project);
   }
 
   init();

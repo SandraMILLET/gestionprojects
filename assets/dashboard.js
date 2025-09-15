@@ -71,13 +71,13 @@
               </div>
             </div>
             <div class="mt-2 small d-flex align-items-center gap-2">
-              <svg class="icon"><use href="assets/icons.svg#calendar"></use></svg>
+              📅
               <span class="text-muted">Deadline</span>
               <strong>${p.deadline}</strong>
               <span class="badge ${badgeForDays(d)} deadline-pill ms-auto">J-${d}</span>
             </div>
             <div class="mt-2 small">
-              <svg class="icon"><use href="assets/icons.svg#euro"></use></svg>
+              💰
               <span>Montant</span> <strong>${fmtMoney(p.amount)}</strong> •
               <span>Payé</span> <strong>${fmtMoney(p.paid)}</strong> •
               <span>Reste</span> <strong>${fmtMoney(rest)}</strong>
@@ -90,13 +90,13 @@
             <div class="mt-auto d-flex gap-2 pt-3">
               <a class="btn btn-primary btn-sm" href="project.html?id=${p.id}" aria-label="Ouvrir ${p.name}">Ouvrir</a>
               <button class="btn btn-outline-secondary btn-sm" data-action="edit" data-id="${p.id}">
-                <svg class="icon"><use href="assets/icons.svg#edit"></use></svg> Éditer
+                ✏️ Éditer
               </button>
               <button class="btn btn-outline-secondary btn-sm" data-action="dup" data-id="${p.id}">
-                <svg class="icon"><use href="assets/icons.svg#plus"></use></svg> Dupliquer
+                ➕ Dupliquer
               </button>
               <button class="btn btn-outline-danger btn-sm ms-auto" data-action="del" data-id="${p.id}">
-                <svg class="icon"><use href="assets/icons.svg#trash"></use></svg> Supprimer
+                🗑️ Supprimer
               </button>
             </div>
           </div>
