@@ -32,3 +32,4 @@
 ## Remarques
 - Google Calendar : bouton non bloquant (OAuth client-side à brancher avec `google.accounts.oauth2`). L’export `.ics` fonctionne immédiatement.
 - Aucune erreur console attendue sur les navigateurs modernes.
+# gestionprojects

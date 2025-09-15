@@ -104,7 +104,10 @@ function renderMetrics(){
     acc.innerHTML = '';
     (project.phases||[]).forEach((ph, i)=>{
       const pid = 'ph-'+ph.id;
-      const phProg = window.RSM.computeProgress({phases:[ph]});
+      const phProg = (() => {
+  const { total, done } = window.RSM.listAllItems({phases:[ph]});
+  return total > 0 ? Math.round(done * 100 / total) : 0;
+})();
       const header = `
         <div class="accordion-item">
           <h2 class="accordion-header" id="h-${pid}">

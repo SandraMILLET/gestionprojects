@@ -39,26 +39,13 @@ const badgeForDays = (d)=>{
   }catch(e){ console.warn('SVG sprite not loaded', e); }
 })();
 
-function listAllItems(project){
-  let total=0, done=0, estTotal=0, estDone=0, tasksWithDeadline=[];
-  (project.phases||[]).forEach(ph=>{
-    (ph.tasks||[]).forEach(t=>{
-      if (t.deadline) tasksWithDeadline.push(t);
-      total++; estTotal += Number(t.est_h||0);
-      if(t.done){ done++; estDone += Number(t.est_h||0); }
-      (t.subs||[]).forEach(s=>{
-        total++;
-        if(s.done) done++;
-      });
-    });
-  });
-  return {total, done, estTotal, estDone, tasksWithDeadline};
-}
-const computeProgress = (project)=>{
-  const { estTotal, estDone } = listAllItems(project);
-  return estTotal > 0 ? Math.round(estDone * 100 / estTotal) : 0;
-};
 
+
+// Alternative plus simple : utiliser le pourcentage d'items cochés
+function computeProgressSimple(project){
+  const { total, done } = listAllItems(project);
+  return total > 0 ? Math.round(done * 100 / total) : 0;
+}
 /* ---------- Burndown ---------- */
 function computeBurndown(project){
   const {estTotal, estDone} = listAllItems(project);
